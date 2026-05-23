@@ -1,0 +1,17 @@
+version: 2
+updates:
+  - package-ecosystem: "cargo"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    open-pull-requests-limit: 5
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    ignore:
+      # `dtolnay/rust-toolchain@<channel>` pins a Rust channel (e.g. `@stable`,
+      # `@1.91`), not a semver version of the action. Dependabot misreads the
+      # tag as a semver number and "bumps" it to nonexistent versions like
+      # `@1.100`. Track manually instead.
+      - dependency-name: "dtolnay/rust-toolchain"

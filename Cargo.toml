@@ -1,0 +1,25 @@
+[package]
+name = "microvm-warm-pool"
+version = "0.1.0-alpha.1"
+edition = "2024"
+rust-version = "1.91"
+description = "Pre-restored Firecracker microVM pool harness for fast warm handoff. Built on top of microvm-runtime."
+license = "Unlicense"
+repository = "https://github.com/tangle-network/microvm-warm-pool"
+homepage = "https://github.com/tangle-network/microvm-warm-pool"
+documentation = "https://docs.rs/microvm-warm-pool"
+readme = "README.md"
+keywords = ["firecracker", "microvm", "warm-pool", "tangle", "sandbox"]
+categories = ["virtualization", "os::linux-apis"]
+
+[dependencies]
+microvm-runtime = { version = "0.2.0-alpha.1", default-features = false }
+
+[features]
+default = []
+# Forward the `firecracker` feature so downstream consumers can pull the real
+# in-process driver alongside the warm-pool harness from one feature flag.
+firecracker = ["microvm-runtime/firecracker"]
+
+[dev-dependencies]
+microvm-runtime = { version = "0.2.0-alpha.1", default-features = false }
