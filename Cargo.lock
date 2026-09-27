@@ -202,9 +202,9 @@ dependencies = [
 
 [[package]]
 name = "microvm-runtime"
-version = "0.4.0-alpha.2"
+version = "0.4.0-alpha.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c22c15fabcd508d4b626b7f8319626a565c73bffa5db509e1f537fb595693019"
+checksum = "9133803bf92f4d43da70ac99314ad3a5485d920a06914826d83eaed2399c0306"
 dependencies = [
  "base64",
  "libc",
