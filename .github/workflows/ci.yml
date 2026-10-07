@@ -14,7 +14,7 @@ env:
 jobs:
   fmt:
     name: rustfmt
-    runs-on: [self-hosted, ci-public]
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
       - uses: dtolnay/rust-toolchain@1.91
@@ -24,7 +24,7 @@ jobs:
 
   clippy:
     name: clippy
-    runs-on: [self-hosted, ci-public]
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
       - uses: dtolnay/rust-toolchain@1.91
@@ -35,7 +35,7 @@ jobs:
 
   test:
     name: test
-    runs-on: [self-hosted, ci-public]
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
       - uses: dtolnay/rust-toolchain@1.91
@@ -45,7 +45,7 @@ jobs:
 
   docs:
     name: docs
-    runs-on: [self-hosted, ci-public]
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
       - uses: dtolnay/rust-toolchain@1.91
