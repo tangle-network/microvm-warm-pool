@@ -139,6 +139,19 @@ The pool itself is platform-agnostic and tests pass on any host that runs Rust
 - `firecracker` — forwards `microvm-runtime/firecracker`, enabling the in-process
   Firecracker driver alongside the warm-pool harness
 
+
+## Local qualification
+
+Before merge, merge the fresh default branch into the working branch and run affected source checks and real integration checks through the admitted Beelink launcher. Workflow/docs-only changes use YAML, content, link, diff and static checks. Comprehensive commands below are references for the relevant full qualification, selected by the changed surface.
+
+Use the toolchain and components owned by [rust-toolchain.toml](rust-toolchain.toml). The comprehensive reference preserves frozen Cargo resolution, warning failures, formatting, all-target/all-feature Clippy, both test feature populations and documentation checks:
+
+```bash
+beelink-gate auto https://github.com/tangle-network/microvm-warm-pool.git "$(git rev-parse HEAD)" -- sh -c 'export RUSTFLAGS="-D warnings" RUSTDOCFLAGS="-D warnings"; cargo fetch --locked && cargo fmt --all -- --check && cargo clippy --locked --all-targets --all-features -- -D warnings && cargo test --locked --all-features && cargo test --locked --no-default-features && cargo doc --locked --all-features --no-deps'
+```
+
+Real provider integration still requires the host capabilities documented above. PR/push CI is retired; library publication and consumer release qualification retain their existing owners.
+
 ## License
 
 [Unlicense](LICENSE) — public domain.
